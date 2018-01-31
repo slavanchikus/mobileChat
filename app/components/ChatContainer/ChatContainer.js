@@ -10,8 +10,8 @@ import MessagesContainer from './MessagesContainer/MessagesContainer';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 35,
-    paddingBottom: 35,
+    paddingTop: 25,
+    paddingBottom: 15,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',

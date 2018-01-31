@@ -24,11 +24,12 @@ const styles = StyleSheet.create({
     borderRadius: 5
   },
   username: {
+    fontSize: 11,
     fontWeight: '600',
     color: '#ECC948'
   },
   content: {
-    fontSize: 11,
+    fontSize: 10,
     color: 'rgba(255,255,255,0.85)',
     paddingRight: 30,
     maxWidth: 300
@@ -49,11 +50,11 @@ export default class MessagesContainer extends Component {
   };
 
   componentDidMount() {
-    this.container.scrollTop = this.container.scrollHeight;
+    this.scrollView.scrollToEnd({ animated: true });
   }
 
   componentDidUpdate() {
-    this.container.scrollTop = this.container.scrollHeight;
+    this.scrollView.scrollToEnd({ animated: true });
   }
 
   /* setClassName = userId => cx(styles.message, {
@@ -63,7 +64,10 @@ export default class MessagesContainer extends Component {
   render() {
     const { messages } = this.props;
     return (
-      <ScrollView style={styles.container} ref={node => (this.container = node)}>
+      <ScrollView
+        style={styles.container}
+        ref={(input) => { this.scrollView = input; }}
+      >
         {messages.map(message =>
           <View key={message._id} style={styles.message}>
             <Text style={styles.username}>

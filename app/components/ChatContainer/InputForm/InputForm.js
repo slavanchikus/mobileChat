@@ -7,22 +7,29 @@ const postImg = require('../../../img/send-button.png');
 
 const styles = StyleSheet.create({
   container: {
-    height: 40,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     paddingTop: 10,
     paddingLeft: 15,
-    paddingRight: 15
+    paddingRight: 15,
+    borderTopWidth: 1,
+    borderColor: '#ECC948',
   },
   input: {
-    width: 100,
-    height: 40,
+    flex: 1,
+    color: 'rgba(255,255,255,0.85)',
+    paddingLeft: 5,
+    fontSize: 11,
     borderWidth: 1,
     borderColor: 'hsla(0,0%,100%,.1)',
     borderRadius: 5,
   },
-  post: {
-    display: 'flex',
-    width: 40,
-    height: 40,
+  send_img: {
+    width: 20,
+    height: 20,
+    marginLeft: 10
   }
 });
 
@@ -32,32 +39,47 @@ export default class InputForm extends Component {
     onCreateMessage: PropTypes.func.isRequired
   };
 
+  state = {
+    content: ''
+  };
+
+  handleChange = (content) => {
+    this.setState({ content });
+  };
+
   handleClick = () => {
-    const content = this.input.innerText;
+    const { content } = this.state;
     const { userId, username } = this.props.user;
 
-    this.props.onCreateMessage(content, userId, username);
-    this.input.innerText = '';
-    this.input.focus();
+    if (content) {
+      this.props.onCreateMessage(content, userId, username);
+      this.textInput.clear();
+      this.textInput.focus();
+    }
   };
 
   render() {
     return (
       <View style={styles.container}>
         <TextInput
-          ref={node => (this.input = node)}
-          maxHeight={40}
+          ref={(input) => { this.textInput = input; }}
+          editable
+          multiline
+          maxHeight={60}
           placeholder="Напишите сообщение..."
           style={styles.input}
           spellCheck={false}
+          underlineColorAndroid="transparent"
+          onChangeText={this.handleChange}
         />
-        <Image
-          style={{
-            width: 40,
-            height: 40
-          }}
-          source={postImg}
-        />
+        <TouchableOpacity
+          onPress={this.handleClick}
+        >
+          <Image
+            style={styles.send_img}
+            source={postImg}
+          />
+        </TouchableOpacity>
       </View>
     );
   }
