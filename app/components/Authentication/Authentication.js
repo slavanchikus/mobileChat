@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { View, TextInput, StyleSheet } from 'react-native';
+import { ScrollView, View, TextInput, StyleSheet } from 'react-native';
 import { Text, Button } from 'react-native-elements';
 
 const styles = StyleSheet.create({
@@ -67,7 +67,7 @@ export default class Authentication extends Component {
   render() {
     const { isRegistration } = this.state;
     return (
-      <View>
+      <ScrollView>
         <View style={styles.container}>
           <Text h3 style={styles.text}>
             {isRegistration ? 'Регистрация' : 'Авторизация'}
@@ -87,7 +87,7 @@ export default class Authentication extends Component {
         >
           {isRegistration ? 'Авторизоваться' : 'Зарегистрироваться'}
         </Text>
-      </View>
+      </ScrollView>
     );
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { View, Text, StyleSheet } from 'react-native';
+import { ScrollView, View, Text, StyleSheet } from 'react-native';
 
 import { unixstampConverter } from '../../../utils/convertUnixstamp';
 
@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   container: {
     paddingLeft: 15,
     paddingRight: 15,
+    overflow: 'scroll',
   },
   message: {
     width: 'auto',
@@ -27,17 +28,17 @@ const styles = StyleSheet.create({
     color: '#ECC948'
   },
   content: {
-    fontSize: 13.5,
-    marginLeft: 2,
+    fontSize: 11,
+    color: 'rgba(255,255,255,0.85)',
     paddingRight: 30,
-    maxWidth: 300,
-    overflow: 'scroll',
+    maxWidth: 300
   },
   date: {
+    fontSize: 8.5,
+    color: 'rgba(255,255,255,0.85)',
     position: 'absolute',
     right: 4,
     bottom: 4,
-    fontSize: 11
   }
 });
 
@@ -62,7 +63,7 @@ export default class MessagesContainer extends Component {
   render() {
     const { messages } = this.props;
     return (
-      <View style={styles.container} ref={node => (this.container = node)}>
+      <ScrollView style={styles.container} ref={node => (this.container = node)}>
         {messages.map(message =>
           <View key={message._id} style={styles.message}>
             <Text style={styles.username}>
@@ -75,7 +76,7 @@ export default class MessagesContainer extends Component {
               {unixstampConverter(message.date)}
             </Text>
           </View>)}
-      </View>
+      </ScrollView>
     );
   }
 }

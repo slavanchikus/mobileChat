@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { View, StyleSheet } from 'react-native';
+import { KeyboardAvoidingView, StyleSheet } from 'react-native';
 
 import { socket } from '../../sagas/chatSagas';
 
@@ -59,7 +59,10 @@ class MainPage extends React.Component {
   render() {
     const { user, messages } = this.props;
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView
+        behavior="padding"
+        style={styles.container}
+      >
         {user.error &&
           <ErrorContainer
             error={user.error}
@@ -76,7 +79,7 @@ class MainPage extends React.Component {
             messages={messages}
             onCreateMessage={this.props.createMessage}
           />}
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }

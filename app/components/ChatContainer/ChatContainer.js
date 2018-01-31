@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
 
-/* import InputForm from './InputForm/InputForm'; */
+import InputForm from './InputForm/InputForm';
 import MessagesContainer from './MessagesContainer/MessagesContainer';
 
 const styles = StyleSheet.create({
@@ -41,10 +41,10 @@ export default class ChatContainer extends Component {
             currentUserId={user.userId}
             messages={messages}
           />}
-        {/* <InputForm
+        <InputForm
           user={user}
           onCreateMessage={onCreateMessage}
-        /> */}
+        />
       </View>
     );
   }

@@ -1,11 +1,32 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './InputForm.module.styl';
+import { View, TouchableOpacity, Image, TextInput, StyleSheet } from 'react-native';
 
-const placeholder = 'Напишите сообщение...';
+const postImg = require('../../../img/send-button.png');
 
-export default class InputForm extends PureComponent {
+const styles = StyleSheet.create({
+  container: {
+    height: 40,
+    paddingTop: 10,
+    paddingLeft: 15,
+    paddingRight: 15
+  },
+  input: {
+    width: 100,
+    height: 40,
+    borderWidth: 1,
+    borderColor: 'hsla(0,0%,100%,.1)',
+    borderRadius: 5,
+  },
+  post: {
+    display: 'flex',
+    width: 40,
+    height: 40,
+  }
+});
+
+export default class InputForm extends Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
     onCreateMessage: PropTypes.func.isRequired
@@ -16,51 +37,28 @@ export default class InputForm extends PureComponent {
     const { userId, username } = this.props.user;
 
     this.props.onCreateMessage(content, userId, username);
-    this.input.innerHTML = '';
+    this.input.innerText = '';
     this.input.focus();
-  };
-
-  handleKeyDown = (e) => {
-    if (e.ctrlKey && e.keyCode === 13) {
-      this.post.click();
-    }
-  };
-
-  handleFocus = () => {
-    const content = this.input.innerText;
-    if (content === placeholder) {
-      this.input.innerText = '';
-    }
-    this.input.addEventListener('keydown', this.handleKeyDown);
-  };
-
-  handleBlur = () => {
-    const content = this.input.innerText;
-    if (content.length < 1) {
-      this.input.innerHTML = placeholder;
-    }
-    this.input.removeEventListener('keydown', this.handleKeyDown);
   };
 
   render() {
     return (
-      <div className={styles.container}>
-        <div
-          contentEditable
+      <View style={styles.container}>
+        <TextInput
           ref={node => (this.input = node)}
-          className={styles.input}
+          maxHeight={40}
+          placeholder="Напишите сообщение..."
+          style={styles.input}
           spellCheck={false}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-        >
-          {placeholder}
-        </div>
-        <div
-          ref={node => (this.post = node)}
-          className={styles.post}
-          onClick={this.handleClick}
         />
-      </div>
+        <Image
+          style={{
+            width: 40,
+            height: 40
+          }}
+          source={postImg}
+        />
+      </View>
     );
   }
 }
