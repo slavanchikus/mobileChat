@@ -10,23 +10,7 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 15,
     overflow: 'scroll',
-  },
-  message: {
-    width: 'auto',
-    minWidth: 120,
-    minHeight: 30,
-    position: 'relative',
-    marginLeft: 'auto',
-    borderWidth: 1,
-    marginBottom: 10,
-    padding: 10,
-    borderColor: 'rgba(255,255,255,0.10)',
-    borderRadius: 5
-  },
-  username: {
-    fontSize: 11,
-    fontWeight: '600',
-    color: '#ECC948'
+    backgroundColor: '#181818',
   },
   content: {
     fontSize: 10,
@@ -49,17 +33,54 @@ export default class MessagesContainer extends Component {
     messages: PropTypes.array.isRequired,
   };
 
-  componentDidMount() {
-    this.scrollView.scrollToEnd({ animated: true });
+  constructor(props) {
+    super(props);
+    this.contentHeight = 0;
+    this.scrollViewHeight = 0;
   }
 
-  componentDidUpdate() {
-    this.scrollView.scrollToEnd({ animated: true });
-  }
+  setMessageStyle = (userId) => {
+    const marginHandler = () => {
+      if (userId === this.props.currentUserId) {
+        return {
+          marginRight: 'auto'
+        };
+      }
+      return {
+        marginLeft: 'auto'
+      };
+    };
+    return {
+      width: 'auto',
+      minWidth: 120,
+      minHeight: 30,
+      position: 'relative',
+      borderWidth: 1,
+      marginBottom: 10,
+      padding: 5,
+      borderColor: 'rgba(255,255,255,0.10)',
+      borderRadius: 5,
+      ...marginHandler()
+    };
+  };
 
-  /* setClassName = userId => cx(styles.message, {
-    [styles.own_message]: userId === this.props.currentUserId
-  }); */
+  setUsernameStyle = (userId) => {
+    const colorHandler = () => {
+      if (userId === this.props.currentUserId) {
+        return {
+          color: '#35a14b'
+        };
+      }
+      return {
+        color: '#ECC948'
+      };
+    };
+    return {
+      fontSize: 11,
+      fontWeight: '600',
+      ...colorHandler()
+    };
+  };
 
   render() {
     const { messages } = this.props;
@@ -67,10 +88,14 @@ export default class MessagesContainer extends Component {
       <ScrollView
         style={styles.container}
         ref={(input) => { this.scrollView = input; }}
+        onContentSizeChange={(contentWidth, contentHeight) => {
+          this.contentHeight = contentHeight;
+          this.scrollView.scrollToEnd({ animated: true });
+        }}
       >
         {messages.map(message =>
-          <View key={message._id} style={styles.message}>
-            <Text style={styles.username}>
+          <View key={message._id} style={this.setMessageStyle(message.userId)}>
+            <Text style={this.setUsernameStyle(message.userId)}>
               {message.username}
             </Text>
             <Text style={styles.content}>

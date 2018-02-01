@@ -19,6 +19,10 @@ const styles = StyleSheet.create({
   text: {
     color: 'rgba(255,255,255,0.85)',
     paddingLeft: 15
+  },
+  header: {
+    borderBottomWidth: 1,
+    borderColor: '#ECC948',
   }
 });
 
@@ -33,14 +37,13 @@ export default class ChatContainer extends Component {
     const { user, messages, onCreateMessage } = this.props;
     return (
       <View style={styles.container}>
-        <View>
+        <View style={styles.header}>
           <Text style={styles.text} h3>Чатик</Text>
         </View>
-        {messages.length > 0 &&
-          <MessagesContainer
-            currentUserId={user.userId}
-            messages={messages}
-          />}
+        <MessagesContainer
+          currentUserId={user.userId}
+          messages={messages}
+        />
         <InputForm
           user={user}
           onCreateMessage={onCreateMessage}

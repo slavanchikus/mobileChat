@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     position: 'relative',
-    backgroundColor: '#181818',
+    backgroundColor: '#0f0f0f'
   },
 });
 
@@ -63,11 +63,6 @@ class MainPage extends React.Component {
         behavior="padding"
         style={styles.container}
       >
-        {user.error &&
-          <ErrorContainer
-            error={user.error}
-          />
-        }
         {!user.userId &&
           <Authentication
             onUserRequest={this.props.userRequest}
@@ -79,6 +74,11 @@ class MainPage extends React.Component {
             messages={messages}
             onCreateMessage={this.props.createMessage}
           />}
+        {user.error &&
+          <ErrorContainer
+            error={user.error}
+          />
+          }
       </KeyboardAvoidingView>
     );
   }

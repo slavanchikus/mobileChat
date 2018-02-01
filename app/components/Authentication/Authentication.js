@@ -6,7 +6,7 @@ import { Text, Button } from 'react-native-elements';
 
 const styles = StyleSheet.create({
   container: {
-    height: 300,
+    height: 350,
     paddingTop: 35,
     paddingBottom: 35,
     display: 'flex',
@@ -15,15 +15,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   button: {
-    minWidth: 150,
+    minWidth: 160,
+    marginTop: 30,
     backgroundColor: '#ffdb4d',
     borderRadius: 5
   },
   input: {
     width: 300,
     height: 40,
-    padding: 10,
+    paddingLeft: 5,
     color: 'rgba(255,255,255,0.85)',
+    borderBottomWidth: 1,
+    borderColor: '#ffdb4d'
   },
   text: {
     color: 'rgba(255,255,255,0.85)'
@@ -31,7 +34,7 @@ const styles = StyleSheet.create({
   change: {
     marginTop: 'auto',
     textAlign: 'center',
-    color: '#FF6557',
+    color: '#35a14b',
   }
 });
 
@@ -65,20 +68,21 @@ export default class Authentication extends Component {
   };
 
   render() {
-    const { isRegistration } = this.state;
+    const { isRegistration, username, password } = this.state;
     return (
       <ScrollView>
         <View style={styles.container}>
           <Text h3 style={styles.text}>
             {isRegistration ? 'Регистрация' : 'Авторизация'}
           </Text>
-          <TextInput style={styles.input} placeholder="Юзернейм" onChangeText={this.putUsername} />
-          <TextInput style={styles.input} placeholder="Пароль" onChangeText={this.putPassword} />
+          <TextInput style={styles.input} placeholder="Юзернейм" onChangeText={this.putUsername} underlineColorAndroid="transparent" />
+          <TextInput style={styles.input} placeholder="Пароль" onChangeText={this.putPassword} underlineColorAndroid="transparent" />
           <Button
             buttonStyle={styles.button}
             color="black"
             title={isRegistration ? 'Регистрировать' : 'Войти'}
             onPress={this.handleClick}
+            disabled={username.length < 1 || password.length < 1}
           />
         </View>
         <Text
