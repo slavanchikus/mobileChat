@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f5f69d06-d08f-4607-8cc1-5b315601ffb7" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/components/Authentication/Authentication.module.styl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/components/ChatContainer/InputForm/InputForm.module.styl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/components/ChatContainer/MessagesContainer/MessagesContainer.module.styl" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/Authentication/Authentication.js" afterPath="$PROJECT_DIR$/app/components/Authentication/Authentication.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/ChatContainer/ChatContainer.js" afterPath="$PROJECT_DIR$/app/components/ChatContainer/ChatContainer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/ChatContainer/InputForm/InputForm.js" afterPath="$PROJECT_DIR$/app/components/ChatContainer/InputForm/InputForm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/ChatContainer/MessagesContainer/MessagesContainer.js" afterPath="$PROJECT_DIR$/app/components/ChatContainer/MessagesContainer/MessagesContainer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/ErrorContainer/ErrorContainer.js" afterPath="$PROJECT_DIR$/app/components/ErrorContainer/ErrorContainer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/MainPage/MainPage.js" afterPath="$PROJECT_DIR$/app/components/MainPage/MainPage.js" />
-    </list>
+    <list default="true" id="f5f69d06-d08f-4607-8cc1-5b315601ffb7" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -330,7 +319,7 @@
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="C:/dnevnik.discussions" />
+    <property name="last_opened_file_path" value="C:/dnevnik/DnevnikSolution/static.dnevnik.ru" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -450,12 +439,12 @@
       <workItem from="1517398751795" duration="2970000" />
       <workItem from="1517404363454" duration="3224000" />
       <workItem from="1517470426209" duration="2081000" />
-      <workItem from="1517472666114" duration="2283000" />
+      <workItem from="1517472666114" duration="2827000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33796000" />
+    <option name="totallyTimeSpent" value="34340000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
